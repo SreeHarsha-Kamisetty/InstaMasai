@@ -14,4 +14,36 @@
     <input type="text" placeholder="Enter your city">
     <button id="signup">Signup</button>
 </body>
+<script>
+    let email = document.getElementById("email");
+    let username = document.getElementById("name");
+    let gender = document.getElementById("gender");
+    let password = document.getElementById("password");
+    let age = document.getElementById("age");
+    let city = document.getElementById("city");
+    let signupBtn = document.getElementById("signup");
+    let message = document.getElementById("message");
+    signupBtn.addEventListener("click",()=>{
+        let payload = {
+            email:email.value,
+            name:username.value,
+            gender:gender.value,
+            password:password.value,
+            age:age.value,
+            city:city.value
+        }
+        async function signup(){
+            let res = await fetch("https://distinct-garb-deer.cyclic.app/users/register",{
+                method:"POST",
+                body:JSON.stringify(payload)
+            })
+            let data = await res.json();
+            if(res.status == 200){
+                message.textContent = "Registered successfully. Redirecting to login page";
+                window.location.href = "./login.html"
+            }
+        }
+        signup();
+    })
+</script>
 </html>
