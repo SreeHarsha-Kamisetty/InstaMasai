@@ -7,8 +7,18 @@
 </head>
 <body>
     
-    <input type="text" placeholder="Enter your email">
-    <input type="password" placeholder="Enter your password">
+    <input type="text" placeholder="Enter your email" id="email">
+    <input type="password" placeholder="Enter your password" id="password">
     <button id="login">Login</button>
 </body>
+let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let loginBtn = document.getElementById("login");
+
+    loginBtn.addEventListener("click",()=>{
+        let payload = {
+            email:email.value,
+            password:password.value
+        }
+    })
 </html>
